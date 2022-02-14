@@ -41,6 +41,6 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
     - uses: iterative/setup-dvc@v1
-    - name: dvc commands
+    - name: dvc pull commands
         dvc remote add s3remote s3://udacity.mlops.project3
         dvc pull

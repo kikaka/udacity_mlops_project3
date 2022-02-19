@@ -11,6 +11,9 @@ client = TestClient(app)
 
 def test_api_get_root():
     r = client.get("/")
+    cont = r.json()
+    assert 'welcome' in cont.keys()
+    assert cont['welcome'] == 'Welcome, this is the API of a model for the prediction of salary classes'
     assert r.status_code == 200
 
 
@@ -29,6 +32,7 @@ def test_api_post_predict_response_code():
             "native_country": "Germany"}]
 
     r = client.post("/predict", data=json.dumps(data))
+
     assert r.status_code == 200
 
 

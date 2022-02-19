@@ -37,11 +37,26 @@ class InputDataRecord(BaseModel):
     class Config:
         allow_population_by_field_name = True
         response_model_by_alias = True
+        schema_extra = {
+            "example": [
+                {"age": 35, "workclass": "Without-pay", "fnlgt": 94638,
+                  "education": "Masters",
+                  "education_num": 15,
+                  "marital_status": "Widowed",
+                  "occupation": "Tech-support",
+                  "relationship": "Not-in-family",
+                  "race": "Amer-Indian-Eskimo",
+                  "sex": "Male",
+                  "capital_gain": 0,
+                  "capital_loss": 0,
+                  "hours_per_week": 40,
+                  "native_country": "Germany"}
+            ]
+        }
 
 
 # Instantiate the app.
 app = FastAPI()
-
 
 
 # GET on the root gives a welcome message

@@ -43,5 +43,6 @@ jobs:
     - uses: iterative/setup-dvc@v1
     - name: dvc test pull commands
       run: |
-        dvc pull # dvc remote add s3remote s3://udacity.mlops.project3
+        dvc remote add s3remote s3://udacity.mlops.project3
+        dvc pull -r s3remote
         

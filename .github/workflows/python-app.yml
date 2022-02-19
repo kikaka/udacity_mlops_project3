@@ -42,5 +42,5 @@ jobs:
         aws-region: us-east-1
     - uses: iterative/setup-dvc@v1
     - name: dvc test pull commands
-        dvc remote add s3remote s3://udacity.mlops.project3
-        dvc pull
+        dvc pull # dvc remote add s3remote s3://udacity.mlops.project3
+        

@@ -34,7 +34,6 @@ jobs:
     - uses: iterative/setup-dvc@v1
     - name: dvc test pull commands
       run: |
-        dvc remote add -f -d s3remote s3://udacity.mlops.project3
         dvc pull -r s3remote
     - name: Lint with flake8
       run: |

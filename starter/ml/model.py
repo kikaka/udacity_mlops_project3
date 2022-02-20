@@ -93,7 +93,10 @@ def slice_data(df, feature):
 
 def performance_sliced_data(df, category, cat_features, encoder, lb, model):
     df_slices = slice_data(df, category)
-    print(f'### Model performance on slices of data for category {category}: ###')
+    # Open a file with access mode 'a'
+    file_object = open('slice_output.txt', 'a')
+
+    file_object.write(f'### Model performance on slices of data for category {category}: ###\n')
     for class_name in df_slices.keys():
         X_test_crt, y_test_crt, _, _ = process_data(
             df_slices[class_name], categorical_features=cat_features, label="salary", training=False, encoder=encoder,
@@ -101,5 +104,8 @@ def performance_sliced_data(df, category, cat_features, encoder, lb, model):
         )
         pred_crt = inference(model, X_test_crt)
         crt_precision, crt_recall, crt_fbeta = compute_model_metrics(y_test_crt, pred_crt)
-        print(f"Class {class_name}: beta={crt_fbeta}, recall={crt_recall}, precision={crt_precision}")
-    print('#####################################################################')
+        file_object.write(f"Class {class_name}: beta={crt_fbeta}, recall={crt_recall}, precision={crt_precision}\n")
+    file_object.write('#####################################################################\n')
+
+    # Close the file
+    file_object.close()

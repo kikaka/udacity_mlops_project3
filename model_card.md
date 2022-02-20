@@ -21,3 +21,9 @@ The model was evaluated using the following scores:
 - precision:  0.721
 - recall:  0.266
 - fbeta:  0.389
+
+## Ethical Considerations
+Care should be taken to ensure that the model does not discriminate against anyone, especially with regard to gender and origin.
+## Caveats and Recommendations
+- No hyper parameter tuning and no feature engineering were made
+- Try other methods and train other models for comparison

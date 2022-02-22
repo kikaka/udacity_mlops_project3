@@ -65,4 +65,46 @@ def test_api_post_predict_prediction():
     ]
 
     r = client.post("/predict", data=json.dumps(data))
+
     assert all([i in [0, 1] for i in r.json()['prediction']])
+
+
+def test_api_post_predict_1():
+    data = [{
+        "age": 65, "workclass": "Private", "fnlgt": 94638,
+        "education": "Masters",
+        "education_num": 15,
+        "marital_status": "Widowed",
+        "occupation": "Tech-support",
+        "relationship": "Not-in-family",
+        "race": "Amer-Indian-Eskimo",
+        "sex": "Male",
+        "capital_gain": 100000,
+        "capital_loss": 0,
+        "hours_per_week": 40,
+        "native_country": "United-States"}
+    ]
+
+    r = client.post("/predict", data=json.dumps(data))
+
+    assert r.json()['prediction'][0] == 1
+
+
+def test_api_post_predict_0():
+    data = [{"age": 35, "workclass": "Without-pay", "fnlgt": 94638,
+         "education": "Masters",
+         "education_num": 15,
+         "marital_status": "Widowed",
+         "occupation": "Tech-support",
+         "relationship": "Not-in-family",
+         "race": "Amer-Indian-Eskimo",
+         "sex": "Male",
+         "capital_gain": 0,
+         "capital_loss": 0,
+         "hours_per_week": 40,
+         "native_country": "Germany"}
+    ]
+
+    r = client.post("/predict", data=json.dumps(data))
+
+    assert r.json()['prediction'][0] == 0
